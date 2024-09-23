@@ -35,7 +35,8 @@ async function run() {
      const foodsCollection= client.db('sevorEvreyBiteDb').collection('foods');
 
      app.get('/foods', async(req,res) => {
-        const result =await foodsCollection.find().toArray();
+        const cursor = foodsCollection.find()
+        const result =await cursor.toArray();
         res.send(result);
      })
 
