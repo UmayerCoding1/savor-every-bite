@@ -35,9 +35,16 @@ async function run() {
      const foodsCollection= client.db('sevorEvreyBiteDb').collection('foods');
 
      app.get('/foods', async(req,res) => {
-        const cursor = foodsCollection.find()
-        const result =await cursor.toArray();
-        res.send(result);
+      const cursor = foodsCollection.find()
+      const result =await cursor.toArray();
+      res.send(result);
+     })
+
+    //  top selling api {}
+     app.get('/topSelling', async(req,res) => {
+      const cursor = foodsCollection.find()
+      const result =await cursor.limit(6).toArray();
+      res.send(result);
      })
 
 
