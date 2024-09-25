@@ -43,7 +43,7 @@ async function run() {
     //  top selling api {}
      app.get('/topSelling', async(req,res) => {
       const cursor = foodsCollection.find()
-      const result =await cursor.limit(6).toArray();
+      const result =await cursor.limit(8).toArray();
       res.send(result);
      })
 
