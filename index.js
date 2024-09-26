@@ -34,6 +34,7 @@ async function run() {
     
      const foodsCollection= client.db('sevorEvreyBiteDb').collection('foods');
      const locationCollection= client.db('sevorEvreyBiteDb').collection('locetion_count');
+     const partnerCollection= client.db('sevorEvreyBiteDb').collection('partner');
 
      app.get('/foods', async(req,res) => {
       const cursor = foodsCollection.find()
@@ -59,6 +60,13 @@ async function run() {
   // all location api
     app.get('/location-count', async(req,res)=> {
       const cursor = locationCollection.find();
+      const result = await cursor.toArray();
+      res.send(result)
+    });
+
+    // partner api 
+    app.get('/partner', async(req,res) => {
+      const cursor = partnerCollection.find();
       const result = await cursor.toArray();
       res.send(result)
     })
