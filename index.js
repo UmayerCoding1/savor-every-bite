@@ -33,6 +33,7 @@ async function run() {
     // await client.connect();
     
      const foodsCollection= client.db('sevorEvreyBiteDb').collection('foods');
+     const locationCollection= client.db('sevorEvreyBiteDb').collection('location_count');
 
      app.get('/foods', async(req,res) => {
       const cursor = foodsCollection.find()
@@ -52,6 +53,14 @@ async function run() {
       const query = {_id: new ObjectId(id)}
       const result = await foodsCollection.findOne(query);
       res.send(result);
+    });
+
+
+  // all location api
+    app.get('/location-count', async(req,res)=> {
+      const cursor = locationCollection.find();
+      const result = await cursor.toArray();
+      res.send(result)
     })
 
 

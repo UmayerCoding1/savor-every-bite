@@ -1,0 +1,37 @@
+[
+    {
+        "tile": "Chandpur",
+        "image": "https://i.postimg.cc/Nj9jD4Hm/Chandpur.jpg",
+        "count_ras": 385
+    },
+    {
+        "tile": "Dhaka",
+        "image": "https://i.postimg.cc/rFvkVLDR/dhaka.jpg",
+        "count_ras": 2433
+    },
+    {
+        "tile": "Chottogam",
+        "image": "https://i.postimg.cc/0QtTLggQ/chottogram.jpg",
+        "count_ras": 2104
+    },
+    {
+        "tile": "Khulna",
+        "image": "https://i.postimg.cc/NM0V8Nyw/khulna.jpg",
+        "count_ras": 385
+    },
+    {
+        "tile": "Naraiongong",
+        "image": "https://i.postimg.cc/d3kxpLmH/naraiongong.jpg",
+        "count_ras": 385
+    },
+    {
+        "tile": "rajsahi",
+        "image": "https://i.postimg.cc/1R8RsBvT/rajsahi.jpg",
+        "count_ras": 385
+    },
+    {
+        "tile": "Sylet",
+        "image": "https://i.postimg.cc/HkgT0gTD/sylet.jpg",
+        "count_ras": 385
+    }
+]
