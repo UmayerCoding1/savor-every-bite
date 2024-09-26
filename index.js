@@ -33,7 +33,7 @@ async function run() {
     // await client.connect();
     
      const foodsCollection= client.db('sevorEvreyBiteDb').collection('foods');
-     const locationCollection= client.db('sevorEvreyBiteDb').collection('location_count');
+     const locationCollection= client.db('sevorEvreyBiteDb').collection('locetion_count');
 
      app.get('/foods', async(req,res) => {
       const cursor = foodsCollection.find()
