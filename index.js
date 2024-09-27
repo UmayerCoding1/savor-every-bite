@@ -74,11 +74,20 @@ async function run() {
 
 
     // add to cart api 
+    app.get('/add-to-cart', async(req,res) => {
+        const query = req.query.title;
+        console.log(query);
+        
+      const cursor = addToCartCollection.find()
+      const result = await cursor.toArray();
+      res.send(result)
+    }) 
+
+
     app.post('/add-to-cart', async(req,res) => {
-      const food = req.body;
+      const food = req.body;      
       const result = await addToCartCollection.insertOne(food);
       res.send(result);
-      
     })
 
 
