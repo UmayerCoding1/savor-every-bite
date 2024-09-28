@@ -6,7 +6,11 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Adjust methods as needed
+  credentials: true,
+}));
 app.use(express.json());
 
 
@@ -103,8 +107,19 @@ async function run() {
 
     // add to cart  quantity  update api
     app.put('/add-to-cart/:id', async(req,res) => {
-       const foodQuantity = req.body;
-       console.log(foodQuantity);
+      const id = req.params.id;
+       const food = req.body;
+       const filter = {_id: new ObjectId(id)};
+       console.log(food);
+       
+       const options = { upsert: true };
+       const updateFoodsData = {
+        $set:{
+          quantity: food.updateQuantity
+        }
+       }
+       const result = await addToCartCollection.updateOne(filter,updateFoodsData,options);
+       res.send(result)
        
     })
 
