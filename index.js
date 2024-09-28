@@ -101,9 +101,12 @@ async function run() {
       res.send(result);
     });
 
-    // app.put('/add-to-cart', async(req,res) => {
-    //    c
-    // })
+    // add to cart  quantity  update api
+    app.put('/add-to-cart/:id', async(req,res) => {
+       const foodQuantity = req.body;
+       console.log(foodQuantity);
+       
+    })
 
 
     // Send a ping to confirm a successful connection
