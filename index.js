@@ -74,21 +74,36 @@ async function run() {
 
 
     // add to cart api 
+
+    // add to cart get api
     app.get('/add-to-cart', async(req,res) => {
-        const query = req.query.title;
-        console.log(query);
-        
-      const cursor = addToCartCollection.find()
+        let query = {};
+        if(req.query?.email){
+          query= {email : req.query.email};
+        }
+      const cursor = addToCartCollection.find(query)
       const result = await cursor.toArray();
       res.send(result)
     }) 
 
+    // add to cart get api by (id)
+    app.get('/add-to-cart/:id', async(req,res) => {
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)};
+      const result = await addToCartCollection.findOne(query);
+      res.send(result);
+    })
 
+// add to cart post api
     app.post('/add-to-cart', async(req,res) => {
       const food = req.body;      
       const result = await addToCartCollection.insertOne(food);
       res.send(result);
-    })
+    });
+
+    // app.put('/add-to-cart', async(req,res) => {
+    //    c
+    // })
 
 
     // Send a ping to confirm a successful connection
