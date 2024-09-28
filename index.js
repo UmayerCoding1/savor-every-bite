@@ -120,7 +120,13 @@ async function run() {
        }
        const result = await addToCartCollection.updateOne(filter,updateFoodsData,options);
        res.send(result)
-       
+    })
+
+    app.delete('/add-to-cart/:id', async(req,res) => {
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)};
+      const result = await addToCartCollection.deleteOne(query);
+      res.send(result);
     })
 
 
