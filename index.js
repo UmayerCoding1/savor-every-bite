@@ -42,12 +42,12 @@ async function run() {
      const addToCartCollection= client.db('sevorEvreyBiteDb').collection('addToCart');
 
      app.get('/foods', async(req,res) => {
-      const page =req.query.page;
-      const size = req.query.size;
+      const page =parseInt(req.query.page);
+      const size = parseInt(req.query.size);
       console.log(page,size);
       
-      const cursor = foodsCollection.find()
-      const result =await cursor.limit(25).toArray();
+      const result = await foodsCollection.find().skip(page * size).limit(size).toArray()
+      
       res.send(result);
      })
 
