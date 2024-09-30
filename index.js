@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 
 // middleware
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Adjust methods as needed
   credentials: true,
   optionsSuccessStatus: 200
@@ -45,19 +45,26 @@ async function run() {
      app.get('/foods', async(req,res) => {
       const page =parseInt(req.query.page);
       const size = parseInt(req.query.size);
-      const query = {}
-      if(req.query?.Food_Origin){
-        query = {Food_Origin: req.query.Food_Origin}
-      }
+      
 
       console.log(req.query.origin);
-      const result = await foodsCollection.find(query).skip(page * size).limit(size).toArray()
+      const result = await foodsCollection.find().skip(page * size).limit(size).toArray()
       res.send(result);
      })
 
      app.get('/foodCount', async(req,res) => {
        const count =await foodsCollection.estimatedDocumentCount();
        res.send({count})
+     })
+
+     app.get('/foodOrigin', async(req,res) => {
+      const query = {}
+      if(req.query?.Food_Origin){
+        query = {Food_Origin: req.query.Food_Origin}
+      }
+
+      const result = foodsCollection.find(query).toArray();
+      res.send(result);
      })
 
     //  top selling api {}
