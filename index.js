@@ -62,7 +62,7 @@ async function run() {
       //   query = {Food_Origin: req.query.Food_Origin}
       // }
 
-      const result = foodsCollection.find().toArray();
+      const result =await foodsCollection.find().toArray();
       res.send(result);
      })
 
