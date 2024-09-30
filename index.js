@@ -44,10 +44,13 @@ async function run() {
      app.get('/foods', async(req,res) => {
       const page =parseInt(req.query.page);
       const size = parseInt(req.query.size);
-      console.log(page,size);
-      
-      const result = await foodsCollection.find().skip(page * size).limit(size).toArray()
-      
+      const query = {}
+      if(req.query?.origin){
+        query = {Food_Origin: req.query.origin}
+      }
+
+      console.log(req.query.origin);
+      const result = await foodsCollection.find(query).skip(page * size).limit(size).toArray()
       res.send(result);
      })
 
