@@ -63,7 +63,8 @@ async function run() {
         query = {Price: req.query.Price}
       }
 
-      const result =await foodsCollection.find(query).toArray();
+      const cursor = foodsCollection.find(query)
+      const result = await cursor.toArray();
       res.send(result);
      })
 
