@@ -57,12 +57,12 @@ async function run() {
      })
 
      app.get('/foodOrigin', async(req,res) => {
-      const query = {}
-      if(req.query?.Food_Origin){
-        query = {Food_Origin: req.query.Food_Origin}
-      }
+      // const query = {}
+      // if(req.query?.Food_Origin){
+      //   query = {Food_Origin: req.query.Food_Origin}
+      // }
 
-      const result = foodsCollection.find(query).toArray();
+      const result = foodsCollection.find().toArray();
       res.send(result);
      })
 
