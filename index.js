@@ -46,8 +46,8 @@ async function run() {
       const page =parseInt(req.query.page);
       const size = parseInt(req.query.size);
       const query = {}
-      if(req.query?.origin){
-        query = {Food_Origin: req.query.origin}
+      if(req.query?.Food_Origin){
+        query = {Food_Origin: req.query.Food_Origin}
       }
 
       console.log(req.query.origin);
