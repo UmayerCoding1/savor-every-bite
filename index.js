@@ -57,9 +57,10 @@ async function run() {
      })
 
      app.get('/foodOrigin', async(req,res) => {
+
       const query = {}
-      if(req.query?.Food_Origin){
-        query = {Food_Origin: req.query.Food_Origin}
+      if(req.query?.Price){
+        query = {Price: req.query.Price}
       }
 
       const result =await foodsCollection.find(query).toArray();
