@@ -47,7 +47,6 @@ async function run() {
       const size = parseInt(req.query.size);
       
 
-      console.log(req.query.origin);
       const result = await foodsCollection.find().skip(page * size).limit(size).toArray()
       res.send(result);
      })
